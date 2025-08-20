@@ -1,0 +1,60 @@
+# All Liquidation
+
+Subscribe to the liquidation stream, push all liquidations that occur on Bybit.
+
+**Covers:** USDT contract / USDC contract / Inverse contract
+
+**Push frequency:** 500ms
+
+### Topic:
+`allLiquidation.{symbol}` e.g., `allLiquidation.BTCUSDT`
+
+### Response Parameters
+
+| Parameter | Type | Comments |
+|-----------|------|----------|
+| topic | string | Topic name |
+| type | string | Data type. snapshot |
+| ts | number | The timestamp (ms) that the system generates the data |
+| data | Object |  |
+| > T | number | The updated timestamp (ms) |
+| > s | string | Symbol name |
+| > S | string | Position side. Buy,Sell. When you receive a Buy update, this means that a long position has been liquidated |
+| > v | string | Executed size |
+| > p | string | Bankruptcy price |
+
+### Subscribe Example
+
+```python
+from pybit.unified_trading import WebSocket
+from time import sleep
+ws = WebSocket(
+    testnet=True,
+    channel_type="linear",
+)
+def handle_message(message):
+    print(message)
+ws.all_liquidation_stream("ROSEUSDT", handle_message)
+while True:
+    sleep(1)
+```
+
+### Message Example
+
+```json
+{
+    "topic": "allLiquidation.ROSEUSDT",
+    "type": "snapshot",
+    "ts": 1739502303204,
+    "data": [
+        {
+            "T": 1739502302929,
+            "s": "ROSEUSDT",
+            "S": "Sell",
+            "v": "20000",
+            "p": "0.04499"
+        }
+    ]
+}
+```
+

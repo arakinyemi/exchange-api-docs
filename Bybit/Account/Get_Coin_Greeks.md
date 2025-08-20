@@ -1,0 +1,66 @@
+# Get Coin Greeks
+Get current account Greeks information
+
+
+HTTP Request
+```http
+GET /v5/asset/coin-greeks
+```
+
+Request Parameters
+| Parameter | Required | Type | Comments |
+| --------- | -------- | ---- | -------- |
+| baseCoin | false | string | Base coin, uppercase only. If not passed, all supported base coin greeks will be returned by default |
+
+---
+
+
+Response Parameters
+| Parameter | Type | Comments |
+| --------- | ---- | -------- |
+| list | array | Object |
+| > baseCoin | string | Base coin. e.g.,BTC,ETH,SOL |
+| > totalDelta | string | Delta value |
+| > totalGamma | string | Gamma value |
+| > totalVega | string | Vega value |
+| > totalTheta | string | Theta value |
+
+---
+
+
+Request Example
+
+HTTP
+ 
+  
+```http
+GET /v5/asset/coin-greeks?baseCoin=BTC HTTP/1.1
+Host: api-testnet.bybit.com
+X-BAPI-SIGN: XXXXX
+X-BAPI-API-KEY: xxxxxxxxxxxxxxxxxx
+X-BAPI-TIMESTAMP: 1672287887610
+X-BAPI-RECV-WINDOW: 5000
+```
+
+Response Example
+```json
+{
+    "retCode": 0,
+    "retMsg": "OK",
+    "result": {
+        "list": [
+            {
+                "baseCoin": "BTC",
+                "totalDelta": "0.00004001",
+                "totalGamma": "-0.00000009",
+                "totalVega": "-0.00039689",
+                "totalTheta": "0.01243824"
+            }
+        ]
+    },
+    "retExtinfo
+": {},
+    "time": 1672287887942
+}
+```
+
