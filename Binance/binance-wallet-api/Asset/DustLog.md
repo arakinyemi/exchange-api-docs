@@ -1,0 +1,84 @@
+# DustLog
+
+## API Description​
+
+Dustlog
+
+## HTTP Request​
+
+GET `/sapi/v1/asset/dribblet`
+
+## Request Weight(IP)​
+
+**1**
+
+## Request Parameters​
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| startTime | LONG | NO |  |
+| endTime | LONG | NO |  |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+> * Only return last 100 records
+> * Only return records after 2020/12/01
+
+## Response Example​
+
+```json
+{  
+        "total": 8,   //Total counts of exchange  
+        "userAssetDribblets": [  
+            {  
+                "operateTime": 1615985535000,  
+                "totalTransferedAmount": "0.00132256",   // Total transfered BNB amount for this exchange.  
+                "totalServiceChargeAmount": "0.00002699",    //Total service charge amount for this exchange.  
+                "transId": 45178372831,  
+                "userAssetDribbletDetails": [           //Details of  this exchange.  
+                    {  
+                        "transId": 4359321,  
+                        "serviceChargeAmount": "0.000009",  
+                        "amount": "0.0009",  
+                        "operateTime": 1615985535000,  
+                        "transferedAmount": "0.000441",  
+                        "fromAsset": "USDT"  
+                    },  
+                    {  
+                        "transId": 4359321,  
+                        "serviceChargeAmount": "0.00001799",  
+                        "amount": "0.0009",  
+                        "operateTime": 1615985535000,  
+                        "transferedAmount": "0.00088156",  
+                        "fromAsset": "ETH"  
+                    }  
+                ]  
+            },  
+            {  
+                "operateTime":1616203180000,  
+                "totalTransferedAmount": "0.00058795",  
+                "totalServiceChargeAmount": "0.000012",  
+                "transId": 4357015,  
+                "userAssetDribbletDetails": [         
+                    {  
+                        "transId": 4357015,  
+                        "serviceChargeAmount": "0.00001",  
+                        "amount": "0.001",  
+                        "operateTime": 1616203180000,  
+                        "transferedAmount": "0.00049",  
+                        "fromAsset": "USDT"  
+                    },  
+                    {  
+                        "transId": 4357015,  
+                        "serviceChargeAmount": "0.000002",           
+                        "amount": "0.0001",  
+                        "operateTime": 1616203180000,  
+                        "transferedAmount": "0.00009795",  
+                        "fromAsset": "ETH"  
+                    }  
+                ]  
+            }  
+        ]  
+}
+```
+

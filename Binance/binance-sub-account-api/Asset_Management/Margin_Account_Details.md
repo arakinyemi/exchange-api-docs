@@ -1,0 +1,74 @@
+# Get Detail on Sub-account's Margin Account (For Master Account) 
+
+## API Description​
+
+Get Detail on Sub-account's Margin Account
+
+## HTTP Request​
+
+GET `/sapi/v1/sub-account/margin/account`
+
+## Request Weight(IP)​
+
+**10**
+
+## Request Parameters​
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| email | STRING | YES | Sub-account email |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+## Response Example​
+
+```
+{  
+      "email":"123@test.com",  
+      "marginLevel": "11.64405625",  
+      "totalAssetOfBtc": "6.82728457",  
+      "totalLiabilityOfBtc": "0.58633215",  
+      "totalNetAssetOfBtc": "6.24095242",  
+      "marginTradeCoeffVo":   
+      		{  
+				"forceLiquidationBar": "1.10000000",  // Liquidation margin ratio  
+				"marginCallBar": "1.50000000",        // Margin call margin ratio  
+				"normalBar": "2.00000000"		      // Initial margin ratio  
+			},  
+      "marginUserAssetVoList": [  
+          {  
+              "asset": "BTC",  
+              "borrowed": "0.00000000",  
+              "free": "0.00499500",  
+              "interest": "0.00000000",  
+              "locked": "0.00000000",  
+              "netAsset": "0.00499500"  
+          },  
+          {  
+              "asset": "BNB",  
+              "borrowed": "201.66666672",  
+              "free": "2346.50000000",  
+              "interest": "0.00000000",  
+              "locked": "0.00000000",  
+              "netAsset": "2144.83333328"  
+          },  
+          {  
+              "asset": "ETH",  
+              "borrowed": "0.00000000",  
+              "free": "0.00000000",  
+              "interest": "0.00000000",  
+              "locked": "0.00000000",  
+              "netAsset": "0.00000000"  
+          },  
+          {  
+              "asset": "USDT",  
+              "borrowed": "0.00000000",  
+              "free": "0.00000000",  
+              "interest": "0.00000000",  
+              "locked": "0.00000000",  
+              "netAsset": "0.00000000"  
+          }  
+      ]  
+}
+```
+
